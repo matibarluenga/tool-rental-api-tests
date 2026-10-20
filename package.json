@@ -1,0 +1,17 @@
+{
+  "name": "tool-rental-api-tests",
+  "version": "1.0.0",
+  "description": "API tests for Simple Tool Rental API using Postman + Newman",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run collections/Simple-Tool-Rental.postman_collection.json -e environments/Production.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/report.html"
+  },
+  "keywords": [],
+  "author": "Matías Barluenga",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "newman": "^6.2.3",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}

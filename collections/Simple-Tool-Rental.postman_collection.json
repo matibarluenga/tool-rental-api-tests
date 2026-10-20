@@ -1,0 +1,43 @@
+{
+  "info": {
+    "_postman_id": "ea5f4b30-e6d7-4833-89e0-90443b629a15",
+    "name": "Simple-Tool-Rental",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "13041173"
+  },
+  "item": [
+    {
+      "name": "Tools",
+      "item": [
+        {
+          "name": "Get all tools",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Response time is less than 2000ms\", function () {\n    pm.expect(pm.response.responseTime).to.be.below(2000);\n});\n\npm.test(\"Response contains tool objects with required fields\", function () {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.length).to.be.above(0);\n    jsonData.forEach( (tool)=> {\n        pm.expect(tool).to.have.property('id');\n        pm.expect(tool).to.have.property('name');\n        pm.expect(tool).to.have.property('category');\n        pm.expect(tool).to.have.property('inStock');\n    });\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tools",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tools"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
