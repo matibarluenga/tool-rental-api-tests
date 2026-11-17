@@ -10,6 +10,34 @@
       "name": "Tools",
       "item": [
         {
+          "name": "Check API status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Response body contains status UP\", function () {\n    var jsonData = pm.response.json();\n    pm.expect(jsonData.status).to.eql(\"UP\");\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Get all tools",
           "event": [
             {
